@@ -1,5 +1,18 @@
+const statusDisplay = document.getElementById("d1");
 
-const delayDisplay = document.getElementById("d1");
+function loadDoc() {
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            statusDisplay.innerHTML=  "http status: " + xhttp.status;
+            alert(xhttp.response);
+        }
+    };
+    xhttp.open("GET", "data/response.txt", true);
+    xhttp.send();
+}
+
+
 // function  randomizedAlert() {
 //     let randomNumber = Math.floor(Math.random() * 5000);
 //     setTimeout( function () {
@@ -8,15 +21,3 @@ const delayDisplay = document.getElementById("d1");
 //     console.log(delayDisplay);
 //     delayDisplay.innerText = "response returned after " + randomNumber + "ms";
 // }
-
-function loadDoc() {
-    var xhttp = new XMLHttpRequest();
-    xhttp.onreadystatechange = function() {
-        if (this.readyState == 4 && this.status == 200) {
-            delayDisplay.innerHTML=  xhttp.status;
-            alert(xhttp.response)
-        }
-    };
-    xhttp.open("GET", "data/response.txt", true);
-    xhttp.send();
-}
